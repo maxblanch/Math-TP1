@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Convert
+comment0.text=\n\ Write\ a\ description\ of\ class\ Convert\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=num\ base
+comment1.target=java.lang.String\ convertToBase10(java.lang.String,\ int)
+comment2.params=str\ base\ exp
+comment2.target=double\ calculatePower(java.lang.String,\ int,\ int)
+comment3.params=binStr\ base
+comment3.target=java.lang.String\ convertBinaryToXBase(java.lang.String,\ int)
+comment4.params=str\ xBaseStr\ groupOfXNumber
+comment4.target=java.lang.String\ convertGroupedBinaryToXBase(java.lang.String,\ java.lang.String,\ int)
+comment5.params=str\ groupedInXNumbers\ isFractional
+comment5.target=java.lang.String\ addZerosToString(java.lang.String,\ int,\ boolean)
+numComments=6
