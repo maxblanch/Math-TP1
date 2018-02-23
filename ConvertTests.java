@@ -300,5 +300,175 @@ public class ConvertTests
         //Assert
         final String EXPECTED_HEX_NUMBER = "FF.54";
         assertEquals(EXPECTED_HEX_NUMBER, HEX_NUMBER);
+    }    
+    @Test
+    public void WHEN_string_has_no_zero_at_the_beginning_THEN_ltrim_RETURNS_same_string(){
+        //Act
+        String rdmString = "15486";
+        
+        //Arrange
+        String trimmedString = Convert.leftTrim(rdmString);
+        
+        //Assert
+        final String EXPECTED_TRIMMED_STRING = "15486";
+        assertEquals(EXPECTED_TRIMMED_STRING,trimmedString);
+    }    
+    @Test
+    public void WHEN_string_has_2_zero_at_the_beginning_THEN_ltrim_RETURNS_string_with_no_zero_at_the_beginning(){
+        //Act
+        String rdmString = "00015486";
+        
+        //Arrange
+        String trimmedString = Convert.leftTrim(rdmString);
+        
+        //Assert
+        final String EXPECTED_TRIMMED_STRING = "15486";
+        assertEquals(EXPECTED_TRIMMED_STRING,trimmedString);
     }
+    //#4
+    //Tests pour la sous-fonction #4 "convertOctalDigitIntoBinary" -
+    @Test
+    public void WHEN_octalDigitIs3_THEN_convertOctalDigitIntoBinary_Returns011(){
+        //Act
+        char octalDigit = '3';
+        
+        //Arrange
+        String OctalDigitRepresentation = Convert.convertOctalDigitIntoBinary(octalDigit);
+        
+        //Assert
+        final String EXPECTED_REPRESENTATION = "011";
+        assertEquals(EXPECTED_REPRESENTATION,OctalDigitRepresentation);
+    }    
+    @Test
+    public void WHEN_octalDigitIs6_THEN_convertOctalDigitIntoBinary_Returns110(){
+        //Act
+        char octalDigit = '6';
+        
+        //Arrange
+        String OctalDigitRepresentation = Convert.convertOctalDigitIntoBinary(octalDigit);
+        
+        //Assert
+        final String EXPECTED_REPRESENTATION = "110";
+        assertEquals(EXPECTED_REPRESENTATION,OctalDigitRepresentation);
+    }
+    //Test pour la main-fonction #4 "convertOctalIntoBinary" -
+    @Test
+    public void WHEN_octalNumberIs343_THEN_convertOctalIntoBinary_Returns011100011(){
+        //Act
+        String octalNumber = "343";
+        
+        //Arrange
+        String OctalDigitRepresentation = Convert.convertOctalIntoBinary(octalNumber);
+        
+        //Assert
+        final String EXPECTED_REPRESENTATION = "11100011";
+        assertEquals(EXPECTED_REPRESENTATION,OctalDigitRepresentation);
+    }    
+    @Test
+    public void WHEN_octalNumberIs1234Comma567_THEN_convertOctalIntoBinary_Returns1010011100Comma101110111(){
+        //Act
+        String octalNumber = "01234,567";
+        
+        //Arrange
+        String OctalDigitRepresentation = Convert.convertOctalIntoBinary(octalNumber);
+        
+        //Assert
+        final String EXPECTED_REPRESENTATION = "1010011100,101110111";
+        assertEquals(EXPECTED_REPRESENTATION,OctalDigitRepresentation);
+    }
+    //#5
+    //Tests pour la main-fonction #5 - "convertHexIntoBinary" -
+    @Test
+    public void WHEN_hexNumberIs_1AD6_THEN_convertHexIntoBinary_Returns1101011010110(){
+        //Act
+        String hexNumber = "1AD6";
+        
+        //Arrange
+        String hexDigitRepresentation = Convert.convertHexIntoBinary(hexNumber);
+        
+        //Assert
+        final String EXPECTED_REPRESENTATION = "1101011010110";
+        assertEquals(EXPECTED_REPRESENTATION,hexDigitRepresentation);
+    }    
+    @Test
+    public void WHEN_hexNumberIs_01234567Comma89ABCDEF_THEN_convertHexIntoBinary_Returns1001000110100010101100111Comma10001001101010111100110111101111(){
+        //Act
+        String hexNumber = "01234567,89ABCDEF";
+        
+        //Arrange
+        String hexDigitRepresentation = Convert.convertHexIntoBinary(hexNumber);
+        
+        //Assert
+        final String EXPECTED_REPRESENTATION = "1001000110100010101100111,10001001101010111100110111101111";
+        assertEquals(EXPECTED_REPRESENTATION,hexDigitRepresentation);
+    }
+    //#6
+    //Tests pour la sous-fonction #6 -"convertDecimalBeforeCommaInBbase"-
+    @Test
+    public void WHEN_decimalNumberIs115AndBaseIs8_THEN_convertDecimalBeforeCommaInBbase_RETURNS_163(){
+        //Act
+        int decimalNumber = 115;
+        int base = 8;
+        
+        //Arrange
+        String result = Convert.convertDecimalBeforeCommaInBbase(decimalNumber,base);
+        
+        //Assert
+        final String EXPECTED_RESULTS = "163";
+        assertEquals(EXPECTED_RESULTS,result);
+    }    
+    @Test
+    public void WHEN_decimalNumberIs115AndBaseIs2_THEN_convertDecimalBeforeCommaInBbase_RETURNS_1110011(){
+        //Act
+        int decimalNumber = 115;
+        int base = 2;
+        
+        //Arrange
+        String result = Convert.convertDecimalBeforeCommaInBbase(decimalNumber,base);
+        
+        //Assert
+        final String EXPECTED_RESULTS = "1110011";
+        assertEquals(EXPECTED_RESULTS,result);
+    }        
+    ////Test pour la sous-fonction #6 -"convertDecimalAfterCommaInBbase"-
+    @Test
+    public void WHEN_decimalPartIs375AndBaseIs2_THEN_convertDecimalAfterCommaInBbase_RETURNS_011(){
+        //Act
+        int decimalpart = 375;
+        int base = 2;
+        
+        //Arrange
+        String result = Convert.convertDecimalAfterCommaInBbase(decimalpart,base);
+        
+        //Assert
+        final String EXPECTED_RESULTS = "011";
+        assertEquals(EXPECTED_RESULTS,result);
+    }  
+    //Tests pour la main-fonction #6 -"convertFullDecimalInBbase"-
+    @Test
+    public void WHEN_decimalNumberIs79AndBaseIs2_THEN_convertFullDecimalInBbase_RETURNS_1001111(){
+        //Act
+        String decimalNumber = "79";
+        int base = 2;
+        
+        //Arrange
+        String result = Convert.convertFullDecimalInBbase(decimalNumber,base);
+        
+        //Assert
+        final String EXPECTED_RESULTS = "1001111";
+        assertEquals(EXPECTED_RESULTS,result);
+    }    
+    @Test
+    public void WHEN_decimalNumberIs46Comma375AndBaseIs2_THEN_convertFullDecimalInBbase_RETURNS_101110Comma011(){
+        //Act
+        String decimalNumber = "46,375";
+        int base = 2;
+        
+        //Arrange
+        String result = Convert.convertFullDecimalInBbase(decimalNumber,base);
+        
+        //Assert
+        final String EXPECTED_RESULTS = "101110,011";
+        assertEquals(EXPECTED_RESULTS,result);
+    }    
 }
